@@ -21,7 +21,8 @@ export default function Chat() {
   }, [selectedUserId]);
 
   function connectToWs() {
-    const ws = new WebSocket("ws://localhost:4040");
+    // const ws = new WebSocket(import.meta.env.VITE_BACKEND_URL.replace("http://", "ws://"));
+    const ws = new WebSocket(import.meta.env.VITE_BACKEND_URL.replace("https://", "wss://"));
     setWs(ws);
     ws.addEventListener("message", handleMessage);
     ws.addEventListener("close", () => {
